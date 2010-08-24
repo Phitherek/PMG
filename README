@@ -1,0 +1,9 @@
+PMG - PHP and MySQL Guestlist
+
+Planned TODO:
+1. CLEAN ALL THIS MESS (it is just test system, which I needed once).
+2. Add session fixation and SQL Injection preventions.
+3. English version.
+4. maybe SLM (see SLM repo).
+
+Enjoy!
