@@ -2,7 +2,7 @@
 <html>
 <head>
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Guestlist</title>
+<title>Phitherek_' s PMG - Lista gości</title>
 </head>
 <body>
 <?php
@@ -106,6 +106,7 @@ mysql_close($connection);
 ?>
 </table>
 <hr />
-<a class="guestlist_footer_link" href="guestlist_admin.php" title="Administracja">Administracja</a>
+<p class="guestlist_footer_text">Powered by PMG | &copy; 2010 by Phitherek_<br />
+<a class="guestlist_footer_link" href="guestlist_admin.php" title="Administracja">Administracja</a></p>
 </body>
 </html>

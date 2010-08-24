@@ -1,7 +1,7 @@
 <html>
 <head>
 <META http-equiv = "Content-Type" content = "text/html; charset=UTF-8">
-<title>Instalacja Guestlist</title>
+<title>Instalacja PMG</title>
 </head>
 <body>
 <?php
@@ -129,7 +129,7 @@ if($_POST['save'] == 1) {
 }
 if($action == "create_db") {
 ?>	
-<h1>Guestlist - ustawienia nowej bazy danych</h1><br /><br />
+<h1>PMG - ustawienia nowej bazy danych</h1><br /><br />
 <form action="<?php echo($_SERVER["PHP_SELF"]); ?>" method="post">
 Serwer MySQL: <input type="text" name="dbserek" value="localhost" /><br />
 Nazwa użytkownika MySQL: <input type="text" name="dbuser" value="root" /><br />
@@ -141,7 +141,7 @@ Nazwa nowej bazy danych: <input type="text" name="dbname" /><br />
 <?php
 } else if($action == "existing_db") {
 ?>
-<h1>Guestlist - ustawienia bazy danych</h1><br /><br />
+<h1>PMG - ustawienia bazy danych</h1><br /><br />
 <form action="<?php echo($_SERVER["PHP_SELF"]); ?>" method="post">
 Serwer MySQL: <input type="text" name="dbserek" value="localhost" /><br />
 Nazwa użytkownika MySQL: <input type="text" name="dbuser" value="root" /><br />
@@ -153,7 +153,7 @@ Nazwa bazy danych: <input type="text" name="dbname" /><br />
 <?php
 } else if($action == "table_ask") {
 ?>
-<h1>Guestlist - ustawienia tabeli</h1><br /><br />
+<h1>PMG - ustawienia tabeli</h1><br /><br />
 Czy chcesz stworzyć nową tabelę?<br /><br/>
 <form action="<?php echo($_SERVER["PHP_SELF"]); ?>" method="post">
 <input type="hidden" value="2" name="newtable">
@@ -166,7 +166,7 @@ Czy chcesz stworzyć nową tabelę?<br /><br/>
 <?php
 } else if($action == "create_table") {
 ?>
-<h1>Guestlist - tworzenie nowej tabeli</h1><br /><br />
+<h1>PMG - tworzenie nowej tabeli</h1><br /><br />
 <form action="<?php echo($_SERVER["PHP_SELF"]); ?>" method="post">
 Nazwa nowej tabeli: <input type="text" name="dbtable" value="guestlist" />
 <input type="hidden" value="1" name="newtable_entered" />
@@ -175,7 +175,7 @@ Nazwa nowej tabeli: <input type="text" name="dbtable" value="guestlist" />
 <?php
 } else if($action == "existing_table") {
 ?>
-<h1>Guestlist - ustawienia tabeli</h1><br /><br />
+<h1>PMG - ustawienia tabeli</h1><br /><br />
 <form action="<?php echo($_SERVER["PHP_SELF"]); ?>" method="post">
 Nazwa tabeli: <input type="text" name="dbtable" value="guestlist" />
 <input type="hidden" value="1" name="table_entered" />
@@ -184,7 +184,7 @@ Nazwa tabeli: <input type="text" name="dbtable" value="guestlist" />
 <?php
 } else if($action == "admin_setup") {
 ?>
-<h1>Guestlist - hasło administratora i zapis ustawień</h1><br />
+<h1>PMG - hasło administratora i zapis ustawień</h1><br />
 <form action="<?php echo($_SERVER["PHP_SELF"]); ?>" method="post">
 Hasło administratora: <input type="password" name="adminpasswd" />
 Powtórz hasło administratora: <input type="password" name="readminpasswd" />
@@ -195,11 +195,11 @@ Powtórz hasło administratora: <input type="password" name="readminpasswd" />
 } else if($action == "installation_completed") {
 ?>
 <h1>Instalacja ukończona pomyślnie!</h1><br /><br />
-Brawo! Udało Ci się zainstalować Guestlist! Teraz skasuj plik guestlist_install.php i możesz zacząć używać systemu!
+Brawo! Udało Ci się zainstalować PMG! Teraz skasuj plik guestlist_install.php i możesz zacząć używać systemu!
 <?php
 } else {
 ?>
-<h1>Guestlist - ustawienia bazy danych</h1><br /><br />
+<h1>PMG - ustawienia bazy danych</h1><br /><br />
 Czy chcesz stworzyć nową bazę danych?<br /><br/>
 <form action="<?php echo($_SERVER["PHP_SELF"]); ?>" method="post">
 <input type="hidden" value="2" name="newdb">
