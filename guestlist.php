@@ -17,7 +17,7 @@ if($_POST['status_changed'] == 1) {
 		<?php
 		$action = "update_status";
 		} else {
-			$r = mysql_query('UPDATE '.$dbtable.' SET stan = "'.$_POST['guest_status'].'" WHERE id = "'.$_POST['guest_id'].'"');
+			$r = mysql_query('UPDATE '.$dbtable.' SET stan = "'.htmlspecialchars($_POST['guest_status']).'" WHERE id = "'.htmlspecialchars($_POST['guest_id']).'"');
 			if($r == false) {
 			?>
 			<p class="guestlist_error">Nie udało się zaktualizować statusu. Czy na pewno wpisałeś(aś) poprawne ID? Jeżeli tak, skontaktuj się z administratorem!</p><br />
@@ -47,10 +47,14 @@ if($_POST['status_changed'] == 1) {
 if($_GET['action'] == "update_status" || $action == "update_status") {
 ?>
 <h3 class="guestlist_title">Zaktualizuj swój stan!</h3><br /><br />
-<p class="smpbns_text">Na tej stronie możesz zaktualizować swój stan. W poniższym formularzu wpisz swoje unikatowe ID, które otrzymałeś(aś) razem z zaproszeniem, oraz jedną z opcji t/n/nz (oznaczają one kolejno: przybędziesz/nie przybędziesz/jesteś niezdecydowany(a)), a twój stan zostanie zmieniony.</p><br /><br />
+<p class="smpbns_text">Na tej stronie możesz zaktualizować swój stan. W poniższym formularzu wpisz swoje unikatowe ID, które otrzymałeś(aś) razem z zaproszeniem, oraz jedną z opcji, a twój stan zostanie zmieniony.</p><br /><br />
 <form action="<?php echo($_SERVER["PHP_SELF"]); ?>" method="post" />
 ID: <input type="text" name="guest_id" /><br />
-Stan: <input type="text" name="guest_status" /><br />
+Stan: <select name="guest_status" size="1">
+<option value="t">Przybędę</option>
+<option value="n">Nie przybędę</option>
+<option value="nz">Waham się</option>
+</select>
 <input type="hidden" name="status_changed" value="1" />
 <input type="submit" value="Zatwierdź!" /><br />
 <?php
@@ -106,7 +110,7 @@ mysql_close($connection);
 ?>
 </table>
 <hr />
-<p class="guestlist_footer_text">Powered by PMG | &copy; 2010 by Phitherek_<br />
+<p class="guestlist_footer_text">Powered by PMG | &copy; 2010-2012 by Phitherek_<br />
 <a class="guestlist_footer_link" href="guestlist_admin.php" title="Administracja">Administracja</a></p>
 </body>
 </html>

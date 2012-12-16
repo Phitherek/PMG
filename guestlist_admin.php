@@ -6,8 +6,36 @@
 </head>
 <body>
 <?php
+if($_POST['setprefix'] == 1) {
+$prefixfile=fopen("pmg_prefix.php","w");
+flock($prefixfile, LOCK_EX);
+fputs($prefixfile, '<?php'."\n");
+fputs($prefixfile, '$prefix="'.$_POST['prefix'].'";'."\n");
+fputs($prefixfile, '?>');
+flock($prefixfile, LOCK_UN);
+fclose($prefixfile);
+if(file_exists("pmg_prefix.php")) {
+echo("Prefiks został zapisany pomyślnie!<br />");	
+} else {
+echo("Nie udało się zapisać pliku z prefiksem! Sprawdź uprawnienia katalogu i spróbuj ponownie!<br />");	
+}
+}
+if(file_exists("pmg_prefix.php")) {
+include("pmg_prefix.php");
+$prefixexists = true;
+} else {
+$prefixexists = false;	
+}
+if($prefixexists == true) {
 session_start();
-include("guestlist_settings.php");
+if (!isset($_SESSION[$prefix.'started'])) {
+session_regenerate_id();
+$_SESSION[$prefix.'started'] = true;
+}
+if(file_exists("guestlist_settings.php")) {
+	include("guestlist_settings.php");
+$connection=mysql_connect($dbserek,$dbuser,$dbpasswd) or die("Nie można połączyć się z bazą danych. Skontaktuj się z administratorem! Do administratora: Sprawdź ustawienia!");
+	$r = mysql_select_db($dbname);
 if($_POST['epasswd'] == 1) {
 	if($_POST['adminpasswd'] == $adminpasswd) {
 	$_SESSION['loggedin'] = 1;	
@@ -250,9 +278,24 @@ $_SESSION['loggedin'] = 0;
 <?php
 }
 }
+} else {
+?>
+<p class="guestlist_error">Nie udało się załadować ustawień! Czy na pewno instalacja została ukończona pomyślnie?</p>
+<?php
+}
+} else {
+echo("Ze względów bezpieczeństwa wymagane jest podanie prefiksu dla tej instalacji PMG. NIGDY nie instaluj dwóch systemów z tym samym prefiksem! Jeżeli jest to twoja pierwsza i jedyna instalacja PMG, zaleca się pozostawienie domyślnego prefiksu.<br />");
+?>
+<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+<input type="text" name="prefix" value="pmg_" /><br />
+<input type="hidden" name="setprefix" value="1" />
+<input type="submit" value="Ustaw prefiks i kontynuuj" />
+</form>
+<?php
+}
 ?>
 <hr />
-<p class="guestlist_footer_text">Powered by PMG | &copy; 2010 by Phitherek_<br />
-<a class="guestlist_footer_link" href="guestlist.php" title="Lista gości">Lista gości</a></p>
+<p class="guestlist_footer_text">Powered by PMG | &copy; 2010-2012 by Phitherek_<br />
+<a class="guestlist_footer_link" href="guestlist.php" title="Główna strona PMG">Główna strona PMG</a></p>
 </body>
 </html>
